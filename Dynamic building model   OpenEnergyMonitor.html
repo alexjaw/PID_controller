@@ -1,0 +1,765 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0043)http://openenergymonitor.org/emon/node/2999 -->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en" dir="ltr" class="js"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <title>Dynamic building model | OpenEnergyMonitor</title>
+  
+<script id="twitter-wjs" src="./Dynamic building model   OpenEnergyMonitor_files/widgets.js"></script><script type="text/javascript" src="./Dynamic building model   OpenEnergyMonitor_files/widgets.js"></script><style type="text/css"></style>
+<link rel="shortcut icon" href="http://openenergymonitor.org/emon/sites/default/files/emon3_favicon.png" type="image/x-icon">
+  <link type="text/css" rel="stylesheet" media="all" href="./Dynamic building model   OpenEnergyMonitor_files/aggregator.css">
+<link type="text/css" rel="stylesheet" media="all" href="./Dynamic building model   OpenEnergyMonitor_files/node.css">
+<link type="text/css" rel="stylesheet" media="all" href="./Dynamic building model   OpenEnergyMonitor_files/defaults.css">
+<link type="text/css" rel="stylesheet" media="all" href="./Dynamic building model   OpenEnergyMonitor_files/system.css">
+<link type="text/css" rel="stylesheet" media="all" href="./Dynamic building model   OpenEnergyMonitor_files/system-menus.css">
+<link type="text/css" rel="stylesheet" media="all" href="./Dynamic building model   OpenEnergyMonitor_files/user.css">
+<link type="text/css" rel="stylesheet" media="all" href="./Dynamic building model   OpenEnergyMonitor_files/ckeditor.css">
+<link type="text/css" rel="stylesheet" media="all" href="./Dynamic building model   OpenEnergyMonitor_files/mollom.css">
+<link type="text/css" rel="stylesheet" media="all" href="./Dynamic building model   OpenEnergyMonitor_files/nice_menus.css">
+<link type="text/css" rel="stylesheet" media="all" href="./Dynamic building model   OpenEnergyMonitor_files/nice_menus_default.css">
+<link type="text/css" rel="stylesheet" media="all" href="./Dynamic building model   OpenEnergyMonitor_files/forum.css">
+<link type="text/css" rel="stylesheet" media="all" href="./Dynamic building model   OpenEnergyMonitor_files/views.css">
+<link type="text/css" rel="stylesheet" media="all" href="./Dynamic building model   OpenEnergyMonitor_files/tweetbutton.css">
+<link type="text/css" rel="stylesheet" media="all" href="./Dynamic building model   OpenEnergyMonitor_files/style.css">
+<style type="text/css" media="all">@import "/emon/sites/all/themes/emon3/user_bar.css";</style>
+  <script type="text/javascript" src="./Dynamic building model   OpenEnergyMonitor_files/jquery.js"></script>
+<script type="text/javascript" src="./Dynamic building model   OpenEnergyMonitor_files/drupal.js"></script>
+<script type="text/javascript" src="./Dynamic building model   OpenEnergyMonitor_files/superfish.js"></script>
+<script type="text/javascript" src="./Dynamic building model   OpenEnergyMonitor_files/jquery.bgiframe.min.js"></script>
+<script type="text/javascript" src="./Dynamic building model   OpenEnergyMonitor_files/jquery.hoverIntent.minified.js"></script>
+<script type="text/javascript" src="./Dynamic building model   OpenEnergyMonitor_files/nice_menus.js"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+jQuery.extend(Drupal.settings, { "basePath": "/emon/", "nice_menus_options": { "delay": 800, "speed": 1 } });
+//--><!]]>
+</script>
+  <script type="text/javascript"> </script>
+</head>
+
+<body data-twttr-rendered="true">
+
+<div id="box">
+
+<table border="0" cellpadding="0" cellspacing="0" id="header">
+  <tbody><tr>
+    <td id="logo">
+       <h1 class="site-name"><a href="http://openenergymonitor.org/emon/" title="Home">OpenEnergyMonitor</a></h1>    </td>
+    <td id="menu">
+      
+      <ul class="links" id="navlist"><li class="menu-254 first"><a href="http://openenergymonitor.org/emon/sustainable-energy" title="The OpenEnergyMonitor Vision">About</a></li>
+<li class="menu-198"><a href="http://openenergymonitor.org/emon/opensustech" title="Building upon the work and ideas of many people">Open source</a></li>
+<li class="menu-146"><a href="http://openenergymonitor.org/emon/people" title="People">People</a></li>
+<li class="menu-199"><a href="http://openenergymonitor.blogspot.com/" title="">Blog</a></li>
+<li class="menu-1073"><a href="http://shop.openenergymonitor.com/" title="">Shop</a></li>
+<li class="menu-1051"><a href="http://openenergymonitor.org/emon/forum" title="">Forums </a></li>
+<li class="menu-833 last"><a href="http://github.com/openenergymonitor" title="Software repositories for OpenEnergyMonitor project">GitHub</a></li>
+</ul>      <form action="./Dynamic building model   OpenEnergyMonitor_files/Dynamic building model   OpenEnergyMonitor.html" accept-charset="UTF-8" method="post" id="search-theme-form">
+<div><div id="search" class="container-inline">
+  <div class="form-item" id="edit-search-theme-form-1-wrapper">
+ <label for="edit-search-theme-form-1">Search this site: </label>
+ <input type="text" maxlength="128" name="search_theme_form" id="edit-search-theme-form-1" size="15" value="" title="Enter the terms you wish to search for." class="form-text">
+</div>
+<input type="submit" name="op" id="edit-submit-1" value="Search" class="form-submit">
+<input type="hidden" name="form_build_id" id="form-ZuhliU7oTWDrl1esLa5cVvcTuZ9LYrZY5mdN2HcMXeU" value="form-ZuhliU7oTWDrl1esLa5cVvcTuZ9LYrZY5mdN2HcMXeU">
+<input type="hidden" name="form_id" id="edit-search-theme-form" value="search_theme_form">
+</div>
+
+</div></form>
+      
+      
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><div></div></td>
+</tr>
+</tbody></table>
+<!--<div style="background-color:#444444; border-top: 1px solid #888; height:32px;">-->
+  <div class="block block-nice_menus" id="block-nice_menus-1">
+    <h2 class="title"></h2>
+    <div class="content"><ul class="nice-menu nice-menu-down sf-js-enabled" id="nice-menu-1"><li class="menu-1041 menu-path-openenergymonitororg-emon-guide first  odd "><a href="http://openenergymonitor.org/emon/guide" title="">Get started</a></li>
+<li class="menu-1042 menu-path-openenergymonitororg-emon-Modules even "><a href="http://openenergymonitor.org/emon/Modules" title="">Modules</a></li>
+<li class="menu-1043 menu-path-openenergymonitororg-emon-buildingblocks odd "><a href="http://openenergymonitor.org/emon/buildingblocks" title="">Building Blocks</a></li>
+<li class="menu-1044 menuparent menu-path-openenergymonitororg-emon-community even "><a href="http://openenergymonitor.org/emon/community" title="">Community</a><ul style="visibility: hidden; display: none;"><li class="menu-1052 menu-path-openenergymonitororg-emon-forum first  odd "><a href="http://openenergymonitor.org/emon/forum" title="">Forums </a></li>
+<li class="menu-1122 menu-path-node-751 even  last "><a href="http://openenergymonitor.org/emon/labs" title="Labs">Development &amp; Labs</a></li>
+</ul>
+</li>
+<li class="menu-1393 menu-path-wikiopenenergymonitororg- odd "><a href="http://wiki.openenergymonitor.org/" title="Technical Documentation Wiki ">Wiki</a></li>
+<li class="menu-1590 menu-path-Http--emoncmsorg even "><a href="http://emoncms.org/" title="open-source web-app for processing, logging and visualising energy, temperature and other environmental data">Emoncms</a></li>
+<li class="menu-1634 menu-path-openenergymonitororg-emon-sustainable-energy odd  last "><a href="http://openenergymonitor.org/emon/sustainable-energy" title="">Sustainable Energy</a></li>
+</ul>
+</div>
+ </div>
+
+<table border="0" cellpadding="0" cellspacing="0" id="content">
+  <tbody><tr>
+        <td valign="top">
+            <div id="main">
+        <div class="breadcrumb"><a href="http://openenergymonitor.org/emon/">Home</a></div>     
+        <div class="tabs"></div>
+                          <div class="node">
+
+    
+          <span class="submitted"></span>
+      <div class="taxonomy"></div>
+      <div class="content"><div class="tweetbutton"><iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" src="./Dynamic building model   OpenEnergyMonitor_files/tweet_button.62da0a34306f5c17db7d290755ed1d7d.en.html" class="twitter-share-button twitter-tweet-button twitter-share-button twitter-count-horizontal" title="Twitter Tweet Button" data-twttr-rendered="true" style="width: 107px; height: 20px;"></iframe></div><h1>
+	Dynamic building model</h1>
+<p>In a standard steady state building energy model heat loss is calculated using the standard physics heat conduction equation, where heat loss is equal to the temperature difference between the external an internal surfaces multiplied by the area and u-value of the element.</p>
+<pre>Heat loss = U-value x Area x (Internal temperature – External temperature)</pre><p>The U-value for uniform materials is given by its thermal conductivity divided by the materials thickness.</p>
+<p>A simplified dynamic model can be created by extending this slightly by adding one or more elements that represent thermal mass, representing the heat stored in walls, surfaces, furnishings and air. The illustration below shows a 3-stage thermal resistance and capacitance model which for simple single room spaces can produce a good match to measured data.</p>
+<p><img alt="" src="./Dynamic building model   OpenEnergyMonitor_files/rcsimdiagram_0.png" style="width: 650px; height: 166px;"></p>
+<p>Example of match between simulated internal temperature data (black) and measured temperature data (red) in a simple single space building:</p>
+<p><img alt="" src="./Dynamic building model   OpenEnergyMonitor_files/dynamicheatingmodel.png" style="width: 650px; height: 207px;"></p>
+<p><strong>Segments</strong>: each segment in the model contains a thermal resistance and thermal capacity represented by a resistor and capacitor in the diagram above.</p>
+<p>The change of energy in any of the segments divided by the segments thermal capacity gives you the change in temperature for that segment. The heat flowing between each segment is again calculated using the heat conduction equation above.</p>
+<pre>Segment temperature change(K) = segment energy change(J) / segment thermal capacity(J/K)
+
+Heat flow into s1 from s2 = s2 (W/K)  x (temperature of s2 – temperature of s1)</pre><p><strong>Main model steps</strong>:</p>
+<ol>
+<li>
+		First calculate the net heat flow into each segment given the last reading of temperature and input power.<br>
+		&nbsp;</li>
+<li>
+		Calculate the temperature change of the segment by the energy gained or lost by the segment (net heat flow) divided by its heat capacity.<br>
+		&nbsp;</li>
+<li>
+		Calculate the new temperature's of each segment<br>
+		&nbsp;</li>
+<li>
+		We then repeat, iterating through time.</li>
+</ol>
+<h2>
+	Example</h2>
+<p>The above graph showing measured internal temperature vs simulated internal temperature was the result of a real world test in a small single space building (~ 20m2) of fairly traditional stone construction with 100mm of insulation in the roof but no insulation in the walls or floor, double glazed skylights plus a small single glazed window.</p>
+<p>The model parameters that best reproduced the internal temperature where:</p>
+<table border="1" cellpadding="1" cellspacing="1" style="width: 500px;">
+<tbody>
+<tr>
+<td>
+				&nbsp;</td>
+<td>
+				Thermal Conductivity (W/K)</td>
+<td>
+				Thermal Capacity (J/K)</td>
+</tr>
+<tr>
+<td>
+				Segment 1</td>
+<td>
+				100</td>
+<td>
+				11000000</td>
+</tr>
+<tr>
+<td>
+				Segment 2</td>
+<td>
+				500</td>
+<td>
+				2500000</td>
+</tr>
+<tr>
+<td>
+				Segment 3</td>
+<td>
+				800</td>
+<td>
+				600000</td>
+</tr>
+</tbody>
+</table>
+<p>These where determined by trial and error and are specific to the building under test. These parameters can be determined by monitoring external and internal room temperatures and electrical power input from a heater and then using the dynamic simulation tool in the openbem emoncms module to find the best fit.</p>
+<p>The total thermal conductivity of the building is given by:</p>
+<pre>total thermal conductivity = 1 / ((1/segment1) + (1/segment2)+(1/segment3))</pre><p>The total thermal capacity is the sum of the thermal capacities. Both the total thermal conductivity and total thermal capacity should be derivable via a building fabric analysis of the building which is a good way to cross check the trial and error figures.</p>
+<p><strong>Given an outside temperature of 10C, initial temperature's for each segment of 10C and heat input from a heater at a constant 1000W. Calculate the temperature of each segment after the first and second iteration if the iteration step size is 60s.</strong></p>
+<h2>
+	Solution</h2>
+<p><strong>Iteration 1</strong></p>
+<p>In the first iteration the segment temperatures are all the same and so no net heat flow should occur between segments. However segment 3 our innermost segment has received net heat input from the heater which has been on for the iteration timestep.</p>
+<p>If the heater is set to 1000W heat input and the timestep is 60s then segment 3 gains 60000J of energy in the first iteration.</p>
+<p>We then calculate the temperature increment for the segments. Only the energy in segment 3 has changed. The thermal capacity of segment 3 is 600000J/K and so the temperature increase is 60000/600000 = 0.1K (Kelvin).</p>
+<p>Segment 3 after the first iteration therefore is at 10.1C while all other segments are at 10C.</p>
+<p><strong>Iteration 2</strong></p>
+<p>Segment 3 is now 0.1C above segment 2 which means there will be heat flow between them. The heat loss factor between segment 2 and 3 is 800 W/K. The heat flow is therefore 800 W/K * 0.1 C = 80 W</p>
+<p>Segment 2 gains 80 W for 60s = +4800J<br>
+	Segment 3 loses 80 W for 60s = -4800J<br>
+	Segment 3 is still gaining 1000W from the heater. 60000J and so the net heat gain for segment 3 is 60000 - 4800 = 55200J</p>
+<p>The temperature increase for segment 2 is 4800J / 2500000J/K = 0.00192K.<br>
+	The temperature increase for segment 3 is 55200J / 600000J/K = 0.092K</p>
+<p>At the end of the second iteration the temperature of segment 1 is still 10C, segment 2 is now 10.00192C and segment 3 is now 10.192C.</p>
+<p>And that's it we just keep iterating going forward in time for as long as we want.</p>
+<p>If we now set the model outside temperature to the actual monitored outside temperature from a real time monitoring system and the model heat input to the monitored heat input to the room it should reproduce the internal temperature quite closely (under controlled conditions) as in the graph above.</p>
+<h2>
+	Source code example</h2>
+<p>Simulations like this are easiest ran as computer programs, the model described above can be written as a program in around 15 lines of code:</p>
+<pre>heatinput = 1000;
+outside = 10;
+
+for (i=0; i&lt;iterations; i++)
+{
+    time = i * timestep ;
+    
+    net_heatflow_3 = heatinput - u3*(t3 - t2);
+    net_heatflow_2 = u3*(t3 - t2) - u2*(t2 - t1);     
+    net_heatflow_1 = u2*(t2 - t1) - u1*(t1 - outside);
+
+    t3 += (net_heatflow_3 * timestep) / k3;
+    t2 += (net_heatflow_2 * timestep) / k2;
+    t1 += (net_heatflow_1 * timestep) / k1;
+}</pre><p>k1,2,3 is each segments thermal capacity in J/K. u1,2,3 s each segments thermal conductance in W/K</p>
+<h2>
+	Model limitations</h2>
+<p>The model described above is a relatively simple model its important to understand its applicability and limitations. It works best in small single space buildings which can achieve a fairly even temperature throughout. In buildings with multiple rooms where each room may be heated differently the model would need to be extended to take into account the temperature gradients between rooms and different heat inputs in the rooms.</p>
+<p>Large errors can be produced between simulated and actual internal temperature if windows and doors are opened and closed for more than a few seconds during a test period as opening a door will increase the heat loss rate.</p>
+<p>The model bundles heat loss through windows, walls, floors, roof, infiltration etc all into a single 1 dimensional heat loss pathway to the external environment. In buildings where window area or infiltration rates are of higher significance the heat loss through the window or via infiltration will likely be much more tightly coupled to the external temperature than heat loss through walls which if they contain thermal mass will respond much slower to changes in external temperature.</p>
+<p>The model also bundles all gains into the heatinput variable. Its important to include in the heatinput variable both heating heat input and any electrical power input that may be used by electrical appliances and devices in the room. Of course if non-measured heat input is added to a room such as gas cooking or if electrical heat input used to heat water which is then lost down the drain or the heat is released slowly then this will also produce errors between modelled and measured internal temperature.</p>
+<p>The model does not take into account the effect of other environmental factors such as wind speed, rain and moisture, humidity although it can be relatively easily extended to take into account solar gains if a pyrometer is added to monitor real-time solar flux.</p>
+</div>
+    
+    
+      </div>
+      
+              </div>
+    </td>
+    <td id="sidebar-right">
+        <div class="block block-menu" id="block-menu-secondary-links">
+    <h2 class="title">Site Map</h2>
+    <div class="content"><ul class="menu"><li class="collapsed first"><a href="http://openenergymonitor.org/emon/guide" title="OpenEnergyMonitor Guide">OpenEnergyMonitor Guide</a></li>
+<li class="collapsed"><a href="http://openenergymonitor.org/emon/Modules" title="Modules">Modules</a></li>
+<li class="collapsed"><a href="http://openenergymonitor.org/emon/buildingblocks" title="Building Blocks">Building Blocks</a></li>
+<li class="collapsed"><a href="http://openenergymonitor.org/emon/community%20" title="Community">Community</a></li>
+<li class="collapsed last"><a href="http://openenergymonitor.org/emon/archive" title="Archive and Unsorted">Archive and Unsorted</a></li>
+</ul></div>
+ </div>
+  <div class="block block-user" id="block-user-0">
+    <h2 class="title">User login</h2>
+    <div class="content"><form action="http://openenergymonitor.org/emon/node/2999?destination=node%2F2999" accept-charset="UTF-8" method="post" id="user-login-form">
+<div><div class="form-item" id="edit-name-wrapper">
+ <label for="edit-name">Username: <span class="form-required" title="This field is required.">*</span></label>
+ <input type="text" maxlength="60" name="name" id="edit-name" size="15" value="" class="form-text required">
+</div>
+<div class="form-item" id="edit-pass-wrapper">
+ <label for="edit-pass">Password: <span class="form-required" title="This field is required.">*</span></label>
+ <input type="password" name="pass" id="edit-pass" maxlength="60" size="15" class="form-text required">
+</div>
+<input type="submit" name="op" id="edit-submit" value="Log in" class="form-submit">
+<div class="item-list"><ul><li class="first"><a href="http://openenergymonitor.org/emon/user/register" title="Create a new user account.">Create new account</a></li>
+<li class="last"><a href="http://openenergymonitor.org/emon/user/password" title="Request new password via e-mail.">Request new password</a></li>
+</ul></div><input type="hidden" name="form_build_id" id="form-MdqWk0C2L5lAINPnPZauumLHygb3Oq0itjCzhNQtKac" value="form-MdqWk0C2L5lAINPnPZauumLHygb3Oq0itjCzhNQtKac">
+<input type="hidden" name="form_id" id="edit-user-login-block" value="user_login_block">
+
+</div></form>
+</div>
+ </div>
+  <div class="block block-views" id="block-views-avatar-block_1">
+    <h2 class="title">Community</h2>
+    <div class="content"><div class="view view-avatar view-id-avatar view-display-id-block_1 view-dom-id-1">
+    
+  
+  
+      <div class="view-content">
+      <table class="views-view-grid col-4">
+  <tbody>
+                <tr class="row-1 row-first">
+                  <td class="col-1 col-first">
+              
+  <div class="views-field-picture">
+                <div class="field-content"><div class="picture">
+  <a href="http://openenergymonitor.org/emon/user/4234" title="View user profile."><img src="./Dynamic building model   OpenEnergyMonitor_files/default_0.png" alt="XaroRSA&#39;s picture" title="XaroRSA&#39;s picture" width="50" height="50" class="imagecache imagecache-avatar"></a></div></div>
+  </div>
+          </td>
+                  <td class="col-2">
+              
+  <div class="views-field-picture">
+                <div class="field-content"><div class="picture">
+  <a href="http://openenergymonitor.org/emon/user/238" title="View user profile."><img src="./Dynamic building model   OpenEnergyMonitor_files/picture-238.jpg" alt="Paul Reed&#39;s picture" title="Paul Reed&#39;s picture" width="50" height="50" class="imagecache imagecache-avatar"></a></div></div>
+  </div>
+          </td>
+                  <td class="col-3">
+              
+  <div class="views-field-picture">
+                <div class="field-content"><div class="picture">
+  <a href="http://openenergymonitor.org/emon/user/937" title="View user profile."><img src="./Dynamic building model   OpenEnergyMonitor_files/default_0.png" alt="Bramco&#39;s picture" title="Bramco&#39;s picture" width="50" height="50" class="imagecache imagecache-avatar"></a></div></div>
+  </div>
+          </td>
+                  <td class="col-4 col-last">
+              
+  <div class="views-field-picture">
+                <div class="field-content"><div class="picture">
+  <a href="http://openenergymonitor.org/emon/user/7703" title="View user profile."><img src="./Dynamic building model   OpenEnergyMonitor_files/default_0.png" alt="intruder82&#39;s picture" title="intruder82&#39;s picture" width="50" height="50" class="imagecache imagecache-avatar"></a></div></div>
+  </div>
+          </td>
+              </tr>
+                <tr class="row-2">
+                  <td class="col-1 col-first">
+              
+  <div class="views-field-picture">
+                <div class="field-content"><div class="picture">
+  <a href="http://openenergymonitor.org/emon/user/924" title="View user profile."><img src="./Dynamic building model   OpenEnergyMonitor_files/default_0.png" alt="Robert Wall&#39;s picture" title="Robert Wall&#39;s picture" width="50" height="50" class="imagecache imagecache-avatar"></a></div></div>
+  </div>
+          </td>
+                  <td class="col-2">
+              
+  <div class="views-field-picture">
+                <div class="field-content"><div class="picture">
+  <a href="http://openenergymonitor.org/emon/user/6159" title="View user profile."><img src="./Dynamic building model   OpenEnergyMonitor_files/default_0.png" alt="Lionel&#39;s picture" title="Lionel&#39;s picture" width="50" height="50" class="imagecache imagecache-avatar"></a></div></div>
+  </div>
+          </td>
+                  <td class="col-3">
+              
+  <div class="views-field-picture">
+                <div class="field-content"><div class="picture">
+  <a href="http://openenergymonitor.org/emon/user/7635" title="View user profile."><img src="./Dynamic building model   OpenEnergyMonitor_files/default_0.png" alt="seumas&#39;s picture" title="seumas&#39;s picture" width="50" height="50" class="imagecache imagecache-avatar"></a></div></div>
+  </div>
+          </td>
+                  <td class="col-4 col-last">
+              
+  <div class="views-field-picture">
+                <div class="field-content"><div class="picture">
+  <a href="http://openenergymonitor.org/emon/user/7679" title="View user profile."><img src="./Dynamic building model   OpenEnergyMonitor_files/default_0.png" alt="kirkcarlson&#39;s picture" title="kirkcarlson&#39;s picture" width="50" height="50" class="imagecache imagecache-avatar"></a></div></div>
+  </div>
+          </td>
+              </tr>
+                <tr class="row-3">
+                  <td class="col-1 col-first">
+              
+  <div class="views-field-picture">
+                <div class="field-content"><div class="picture">
+  <a href="http://openenergymonitor.org/emon/user/5437" title="View user profile."><img src="./Dynamic building model   OpenEnergyMonitor_files/default_0.png" alt="EmilianoM&#39;s picture" title="EmilianoM&#39;s picture" width="50" height="50" class="imagecache imagecache-avatar"></a></div></div>
+  </div>
+          </td>
+                  <td class="col-2">
+              
+  <div class="views-field-picture">
+                <div class="field-content"><div class="picture">
+  <a href="http://openenergymonitor.org/emon/user/7497" title="View user profile."><img src="./Dynamic building model   OpenEnergyMonitor_files/default_0.png" alt="eugen66&#39;s picture" title="eugen66&#39;s picture" width="50" height="50" class="imagecache imagecache-avatar"></a></div></div>
+  </div>
+          </td>
+                  <td class="col-3">
+              
+  <div class="views-field-picture">
+                <div class="field-content"><div class="picture">
+  <a href="http://openenergymonitor.org/emon/user/7284" title="View user profile."><img src="./Dynamic building model   OpenEnergyMonitor_files/default_0.png" alt="johnkwhite&#39;s picture" title="johnkwhite&#39;s picture" width="50" height="50" class="imagecache imagecache-avatar"></a></div></div>
+  </div>
+          </td>
+                  <td class="col-4 col-last">
+              
+  <div class="views-field-picture">
+                <div class="field-content"><div class="picture">
+  <a href="http://openenergymonitor.org/emon/user/7419" title="View user profile."><img src="./Dynamic building model   OpenEnergyMonitor_files/default_0.png" alt="Pierrot&#39;s picture" title="Pierrot&#39;s picture" width="50" height="50" class="imagecache imagecache-avatar"></a></div></div>
+  </div>
+          </td>
+              </tr>
+                <tr class="row-4">
+                  <td class="col-1 col-first">
+              
+  <div class="views-field-picture">
+                <div class="field-content"><div class="picture">
+  <a href="http://openenergymonitor.org/emon/user/3" title="View user profile."><img src="./Dynamic building model   OpenEnergyMonitor_files/picture-3.jpg" alt="TrystanLea&#39;s picture" title="TrystanLea&#39;s picture" width="50" height="50" class="imagecache imagecache-avatar"></a></div></div>
+  </div>
+          </td>
+                  <td class="col-2">
+              
+  <div class="views-field-picture">
+                <div class="field-content"><div class="picture">
+  <a href="http://openenergymonitor.org/emon/user/3858" title="View user profile."><img src="./Dynamic building model   OpenEnergyMonitor_files/default_0.png" alt="jtroberts73&#39;s picture" title="jtroberts73&#39;s picture" width="50" height="50" class="imagecache imagecache-avatar"></a></div></div>
+  </div>
+          </td>
+                  <td class="col-3">
+              
+  <div class="views-field-picture">
+                <div class="field-content"><div class="picture">
+  <a href="http://openenergymonitor.org/emon/user/7582" title="View user profile."><img src="./Dynamic building model   OpenEnergyMonitor_files/default_0.png" alt="mike_86&#39;s picture" title="mike_86&#39;s picture" width="50" height="50" class="imagecache imagecache-avatar"></a></div></div>
+  </div>
+          </td>
+                  <td class="col-4 col-last">
+              
+  <div class="views-field-picture">
+                <div class="field-content"><div class="picture">
+  <a href="http://openenergymonitor.org/emon/user/7734" title="View user profile."><img src="./Dynamic building model   OpenEnergyMonitor_files/default_0.png" alt="techupin&#39;s picture" title="techupin&#39;s picture" width="50" height="50" class="imagecache imagecache-avatar"></a></div></div>
+  </div>
+          </td>
+              </tr>
+                <tr class="row-5 row-last">
+                  <td class="col-1 col-first">
+              
+  <div class="views-field-picture">
+                <div class="field-content"><div class="picture">
+  <a href="http://openenergymonitor.org/emon/user/7456" title="View user profile."><img src="./Dynamic building model   OpenEnergyMonitor_files/default_0.png" alt="jvda&#39;s picture" title="jvda&#39;s picture" width="50" height="50" class="imagecache imagecache-avatar"></a></div></div>
+  </div>
+          </td>
+                  <td class="col-2">
+              
+  <div class="views-field-picture">
+                <div class="field-content"><div class="picture">
+  <a href="http://openenergymonitor.org/emon/user/7229" title="View user profile."><img src="./Dynamic building model   OpenEnergyMonitor_files/default_0.png" alt="truzzman&#39;s picture" title="truzzman&#39;s picture" width="50" height="50" class="imagecache imagecache-avatar"></a></div></div>
+  </div>
+          </td>
+                  <td class="col-3">
+              
+  <div class="views-field-picture">
+                <div class="field-content"><div class="picture">
+  <a href="http://openenergymonitor.org/emon/user/1844" title="View user profile."><img src="./Dynamic building model   OpenEnergyMonitor_files/picture-1844.jpg" alt="jonrescca&#39;s picture" title="jonrescca&#39;s picture" width="50" height="50" class="imagecache imagecache-avatar"></a></div></div>
+  </div>
+          </td>
+                  <td class="col-4 col-last">
+              
+  <div class="views-field-picture">
+                <div class="field-content"><div class="picture">
+  <a href="http://openenergymonitor.org/emon/user/7632" title="View user profile."><img src="./Dynamic building model   OpenEnergyMonitor_files/default_0.png" alt="scrissti&#39;s picture" title="scrissti&#39;s picture" width="50" height="50" class="imagecache imagecache-avatar"></a></div></div>
+  </div>
+          </td>
+              </tr>
+      </tbody>
+</table>
+    </div>
+  
+  
+  
+      
+<div class="more-link">
+  <a href="http://openenergymonitor.org/emon/community/details%20">
+    more  </a>
+</div>
+  
+  
+  
+</div> </div>
+ </div>
+  <div class="block block-views" id="block-views-Forums-block_1">
+    <h2 class="title">Active forum topics</h2>
+    <div class="content"><div class="view view-Forums view-id-Forums view-display-id-block_1 view-dom-id-2">
+    
+  
+  
+      <div class="view-content">
+      <div class="item-list">
+    <ul>
+          <li class="views-row views-row-1 views-row-odd views-row-first">  
+  <div class="views-field-title">
+                <span class="field-content"><a href="http://openenergymonitor.org/emon/node/6069">3 Phase + Temp + Pulse</a></span>
+  </div>
+  
+  <div class="views-field-last-comment-timestamp">
+                <span class="field-content"><em>35 min 17 sec</em> ago</span>
+  </div>
+</li>
+          <li class="views-row views-row-2 views-row-even">  
+  <div class="views-field-title">
+                <span class="field-content"><a href="http://openenergymonitor.org/emon/node/10207">Emoncms Bargraph issue</a></span>
+  </div>
+  
+  <div class="views-field-last-comment-timestamp">
+                <span class="field-content"><em>55 min 13 sec</em> ago</span>
+  </div>
+</li>
+          <li class="views-row views-row-3 views-row-odd">  
+  <div class="views-field-title">
+                <span class="field-content"><a href="http://openenergymonitor.org/emon/node/10208">Need sketch for Emontx 3.4  for 4ct, puls and 4 temperature</a></span>
+  </div>
+  
+  <div class="views-field-last-comment-timestamp">
+                <span class="field-content"><em>1 hour 6 min</em> ago</span>
+  </div>
+</li>
+          <li class="views-row views-row-4 views-row-even">  
+  <div class="views-field-title">
+                <span class="field-content"><a href="http://openenergymonitor.org/emon/node/3619">Raspberry Pi Emon Shield</a></span>
+  </div>
+  
+  <div class="views-field-last-comment-timestamp">
+                <span class="field-content"><em>4 hours 7 min</em> ago</span>
+  </div>
+</li>
+          <li class="views-row views-row-5 views-row-odd">  
+  <div class="views-field-title">
+                <span class="field-content"><a href="http://openenergymonitor.org/emon/node/10173">Thermometers - Wireless off the shelf, emonTH, RPi direct connect and others</a></span>
+  </div>
+  
+  <div class="views-field-last-comment-timestamp">
+                <span class="field-content"><em>5 hours 38 sec</em> ago</span>
+  </div>
+</li>
+          <li class="views-row views-row-6 views-row-even">  
+  <div class="views-field-title">
+                <span class="field-content"><a href="http://openenergymonitor.org/emon/node/10201">Emoncms</a></span>
+  </div>
+  
+  <div class="views-field-last-comment-timestamp">
+                <span class="field-content"><em>5 hours 54 min</em> ago</span>
+  </div>
+</li>
+          <li class="views-row views-row-7 views-row-odd">  
+  <div class="views-field-title">
+                <span class="field-content"><a href="http://openenergymonitor.org/emon/node/10190">Application specific dashboards: Solar PV</a></span>
+  </div>
+  
+  <div class="views-field-last-comment-timestamp">
+                <span class="field-content"><em>6 hours 16 min</em> ago</span>
+  </div>
+</li>
+          <li class="views-row views-row-8 views-row-even">  
+  <div class="views-field-title">
+                <span class="field-content"><a href="http://openenergymonitor.org/emon/node/10205">emonTx V3 Transmission Range</a></span>
+  </div>
+  
+  <div class="views-field-last-comment-timestamp">
+                <span class="field-content"><em>8 hours 7 min</em> ago</span>
+  </div>
+</li>
+          <li class="views-row views-row-9 views-row-odd">  
+  <div class="views-field-title">
+                <span class="field-content"><a href="http://openenergymonitor.org/emon/node/2245">Control RF Mains Plugs using the RFM12Pi</a></span>
+  </div>
+  
+  <div class="views-field-last-comment-timestamp">
+                <span class="field-content"><em>8 hours 32 min</em> ago</span>
+  </div>
+</li>
+          <li class="views-row views-row-10 views-row-even">  
+  <div class="views-field-title">
+                <span class="field-content"><a href="http://openenergymonitor.org/emon/node/10206">EmonTh and multiple sensor</a></span>
+  </div>
+  
+  <div class="views-field-last-comment-timestamp">
+                <span class="field-content"><em>8 hours 42 min</em> ago</span>
+  </div>
+</li>
+          <li class="views-row views-row-11 views-row-odd">  
+  <div class="views-field-title">
+                <span class="field-content"><a href="http://openenergymonitor.org/emon/node/10055">First open energy monitor project (PART 2)</a></span>
+  </div>
+  
+  <div class="views-field-last-comment-timestamp">
+                <span class="field-content"><em>10 hours 18 min</em> ago</span>
+  </div>
+</li>
+          <li class="views-row views-row-12 views-row-even">  
+  <div class="views-field-title">
+                <span class="field-content"><a href="http://openenergymonitor.org/emon/node/10163">New Raspberry Pi 2 pre-built SD card image (emonSD-12-02-15.img) BETA</a></span>
+  </div>
+  
+  <div class="views-field-last-comment-timestamp">
+                <span class="field-content"><em>15 hours 42 min</em> ago</span>
+  </div>
+</li>
+          <li class="views-row views-row-13 views-row-odd">  
+  <div class="views-field-title">
+                <span class="field-content"><a href="http://openenergymonitor.org/emon/node/9981">RFM Network dev next steps: Encryption, Auto id/info, ACK, Poll, Control</a></span>
+  </div>
+  
+  <div class="views-field-last-comment-timestamp">
+                <span class="field-content"><em>17 hours 21 min</em> ago</span>
+  </div>
+</li>
+          <li class="views-row views-row-14 views-row-even">  
+  <div class="views-field-title">
+                <span class="field-content"><a href="http://openenergymonitor.org/emon/node/10188">Any success with "Energy Monitor Shield v0.9b"</a></span>
+  </div>
+  
+  <div class="views-field-last-comment-timestamp">
+                <span class="field-content"><em>22 hours 43 min</em> ago</span>
+  </div>
+</li>
+          <li class="views-row views-row-15 views-row-odd views-row-last">  
+  <div class="views-field-title">
+                <span class="field-content"><a href="http://openenergymonitor.org/emon/node/1757">Robin's Mk2 Code variants and associated tools.</a></span>
+  </div>
+  
+  <div class="views-field-last-comment-timestamp">
+                <span class="field-content"><em>1 year 51 weeks</em> ago</span>
+  </div>
+</li>
+      </ul>
+</div>    </div>
+  
+  
+  
+  
+  
+  
+</div> </div>
+ </div>
+  <div class="block block-aggregator" id="block-aggregator-feed-1">
+    <h2 class="title">Latest Blog posts</h2>
+    <div class="content"><div class="item-list"><ul><li class="first"><a href="http://openenergymonitor.blogspot.com/2015/02/introducing-emonpi-raspberry-pi-based.html">Introducing emonPi: Raspberry Pi Based Energy Monitor</a>
+</li>
+<li><a href="http://openenergymonitor.blogspot.com/2015/02/introducing-rfm69pi-v3-raspberry-pi.html">Introducing RFM69Pi V3 Raspberry Pi Expansion Board</a>
+</li>
+<li><a href="http://openenergymonitor.blogspot.com/2015/02/an-open-source-hourly-zero-carbon.html">An open source hourly zero carbon energy system model</a>
+</li>
+<li class="last"><a href="http://openenergymonitor.blogspot.com/2015/02/pre-built-heatpump-dashboards.html">Pre-built heatpump dashboards</a>
+</li>
+</ul></div><div class="more-link"><a href="http://openenergymonitor.org/emon/aggregator/sources/1" title="View this feed&#39;s recent news.">more</a></div></div>
+ </div>
+  <div class="block block-block" id="block-block-1">
+    <h2 class="title"></h2>
+    <div class="content"><p data-twttr-id="twttr-sandbox-0"><iframe id="twitter-widget-1" scrolling="no" frameborder="0" allowtransparency="true" class="twitter-timeline twitter-timeline-rendered" allowfullscreen="" style="border: none; max-width: 100%; min-width: 180px; width: 208px;" title="Twitter Timeline" height="600"></iframe> </p>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+</div>
+ </div>
+  <div class="block block-views" id="block-views-popular_topics-block_1">
+    <h2 class="title">Popular topics updated in the last month</h2>
+    <div class="content"><div class="view view-popular-topics view-id-popular_topics view-display-id-block_1 view-dom-id-3">
+    
+  
+  
+      <div class="view-content">
+      <div class="item-list">
+    <ul>
+          <li class="views-row views-row-1 views-row-odd views-row-first">  
+  <div class="views-field-title">
+                <span class="field-content"><a href="http://openenergymonitor.org/emon/node/841">Mk2 PV Controller, with triac</a></span>
+  </div>
+  
+  <span class="views-field-comment-count">
+                <span class="field-content">(861 comments)</span>
+  </span>
+  
+  <span class="views-field-last-comment-timestamp">
+                <span class="field-content"><em>2 days 8 hours</em> ago</span>
+  </span>
+</li>
+          <li class="views-row views-row-2 views-row-even">  
+  <div class="views-field-title">
+                <span class="field-content"><a href="http://openenergymonitor.org/emon/node/3937">emonPi Development Ideas</a></span>
+  </div>
+  
+  <span class="views-field-comment-count">
+                <span class="field-content">(110 comments)</span>
+  </span>
+  
+  <span class="views-field-last-comment-timestamp">
+                <span class="field-content"><em>2 weeks 4 days</em> ago</span>
+  </span>
+</li>
+          <li class="views-row views-row-3 views-row-odd">  
+  <div class="views-field-title">
+                <span class="field-content"><a href="http://openenergymonitor.org/emon/node/2339">Building a Mk2i ... now testing 3phase energy diverter</a></span>
+  </div>
+  
+  <span class="views-field-comment-count">
+                <span class="field-content">(100 comments)</span>
+  </span>
+  
+  <span class="views-field-last-comment-timestamp">
+                <span class="field-content"><em>3 days 18 hours</em> ago</span>
+  </span>
+</li>
+          <li class="views-row views-row-4 views-row-even">  
+  <div class="views-field-title">
+                <span class="field-content"><a href="http://openenergymonitor.org/emon/node/1680">Smaller current CT?</a></span>
+  </div>
+  
+  <span class="views-field-comment-count">
+                <span class="field-content">(88 comments)</span>
+  </span>
+  
+  <span class="views-field-last-comment-timestamp">
+                <span class="field-content"><em>4 days 29 min</em> ago</span>
+  </span>
+</li>
+          <li class="views-row views-row-5 views-row-odd">  
+  <div class="views-field-title">
+                <span class="field-content"><a href="http://openenergymonitor.org/emon/node/6333">Checking the operation of my Mk2 Diverter</a></span>
+  </div>
+  
+  <span class="views-field-comment-count">
+                <span class="field-content">(81 comments)</span>
+  </span>
+  
+  <span class="views-field-last-comment-timestamp">
+                <span class="field-content"><em>1 week 2 days</em> ago</span>
+  </span>
+</li>
+          <li class="views-row views-row-6 views-row-even">  
+  <div class="views-field-title">
+                <span class="field-content"><a href="http://openenergymonitor.org/emon/node/10055">First open energy monitor project (PART 2)</a></span>
+  </div>
+  
+  <span class="views-field-comment-count">
+                <span class="field-content">(75 comments)</span>
+  </span>
+  
+  <span class="views-field-last-comment-timestamp">
+                <span class="field-content"><em>10 hours 18 min</em> ago</span>
+  </span>
+</li>
+          <li class="views-row views-row-7 views-row-odd">  
+  <div class="views-field-title">
+                <span class="field-content"><a href="http://openenergymonitor.org/emon/node/2406">EmonLibPro Released - Multi sensor, Interrupt based, implements a zero cross detector and PLL.</a></span>
+  </div>
+  
+  <span class="views-field-comment-count">
+                <span class="field-content">(68 comments)</span>
+  </span>
+  
+  <span class="views-field-last-comment-timestamp">
+                <span class="field-content"><em>2 weeks 15 hours</em> ago</span>
+  </span>
+</li>
+          <li class="views-row views-row-8 views-row-even">  
+  <div class="views-field-title">
+                <span class="field-content"><a href="http://openenergymonitor.org/emon/node/1645">Emoncms Event module</a></span>
+  </div>
+  
+  <span class="views-field-comment-count">
+                <span class="field-content">(57 comments)</span>
+  </span>
+  
+  <span class="views-field-last-comment-timestamp">
+                <span class="field-content"><em>2 weeks 5 days</em> ago</span>
+  </span>
+</li>
+          <li class="views-row views-row-9 views-row-odd">  
+  <div class="views-field-title">
+                <span class="field-content"><a href="http://openenergymonitor.org/emon/node/10190">Application specific dashboards: Solar PV</a></span>
+  </div>
+  
+  <span class="views-field-comment-count">
+                <span class="field-content">(48 comments)</span>
+  </span>
+  
+  <span class="views-field-last-comment-timestamp">
+                <span class="field-content"><em>6 hours 16 min</em> ago</span>
+  </span>
+</li>
+          <li class="views-row views-row-10 views-row-even views-row-last">  
+  <div class="views-field-title">
+                <span class="field-content"><a href="http://openenergymonitor.org/emon/node/10058">New OEM server!</a></span>
+  </div>
+  
+  <span class="views-field-comment-count">
+                <span class="field-content">(47 comments)</span>
+  </span>
+  
+  <span class="views-field-last-comment-timestamp">
+                <span class="field-content"><em>1 week 6 days</em> ago</span>
+  </span>
+</li>
+      </ul>
+</div>    </div>
+  
+  
+  
+  
+  
+  
+</div> </div>
+ </div>
+    </td>  </tr>
+</tbody></table>
+
+<div id="footer">
+  <p>Open-source tools for energy monitoring and analysis.&nbsp;This project uses the <a href="http://openenergymonitor.org/emon/node/4">GNU General Public Licence</a></p>
+    <div class="block block-node" id="block-node-0">
+    <h2 class="title">Syndicate</h2>
+    <div class="content"><a href="http://openenergymonitor.org/emon/rss.xml" class="feed-icon"><img src="./Dynamic building model   OpenEnergyMonitor_files/feed.png" alt="Syndicate content" title="Syndicate" width="16" height="16"></a></div>
+ </div>
+ 
+</div>
+
+
+</div>
+
+
+
+<iframe id="rufous-sandbox" scrolling="no" frameborder="0" allowtransparency="true" style="display: none;"></iframe><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(1)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(2)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(2)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(2)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(2)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(2)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(2)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(2)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(2)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(2)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(2)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(2)" async=""></script><script src="./Dynamic building model   OpenEnergyMonitor_files/485068137952317440(2)" async=""></script></body></html>

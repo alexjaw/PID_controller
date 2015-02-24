@@ -1,0 +1,282 @@
+/* $Id: nice_menus_default.css,v 1.10 2010/10/09 16:58:04 add1sun Exp $ */
+/*
+  This is the default layout template for nice menus, and will provide
+  a starting point for the look of your menus. To customize, it's
+  recommended to create a custom CSS file using this file as a template,
+  then configure the module to use your custom CSS file
+  (this is done in the global settings tab of the theme administration.)
+
+  See README.txt and the handbook page (http://drupal.org/node/185543)
+  for more information on using the CSS.
+*/
+
+/******************************
+ Global CSS for ALL menu types
+******************************/
+
+ul.nice-menu,
+ul.nice-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-top: 1px solid #888;
+}
+
+ul.nice-menu li {
+  border-right: 1px solid #000;
+  border-top: 0;
+  float: left; /* LTR  */
+
+}
+
+ul.nice-menu a {
+  padding: 0.0em 15px 0.0em 15px;
+
+  line-height:32px;
+
+  font-size: 13px;
+  font-weight: bold;
+  text-decoration: none;
+  color: white;
+  text-shadow: 0 -1px 1px black;
+}
+
+ul.nice-menu ul {
+  /*top: 1.8em;*/
+  left: -1px; /* LTR */
+  border: 0;
+  border-top: 1px solid #888;
+  margin-right: 0; /* LTR */
+}
+
+ul.nice-menu ul li {
+  width: 16em;
+}
+
+/******************************
+ VERTICAL (left/right) menus
+******************************/
+
+/* This is the default width of all vertical menus. */
+ul.nice-menu-right, ul.nice-menu-left,
+ul.nice-menu-right li, ul.nice-menu-left li {
+  width: 12.5em;
+}
+
+/* VERTICAL menus where submenus pop RIGHT (default). */
+ul.nice-menu-right ul {
+  width: 12.5em;
+  left: 12.5em;
+  top: -1px;
+}
+
+ul.nice-menu-right ul ul {
+  width: 12.5em;
+  left: 12.5em;
+  top: -1px;
+}
+
+ul.nice-menu-right li.menuparent,
+ul.nice-menu-right li li.menuparent {
+  background-color: #444444;
+  background-image: -webkit-linear-gradient(#555,#333);
+  background-image: -moz-linear-gradient(#555,#333);
+  background-image: -ms-linear-gradient(#555,#333);
+  background-image: -o-linear-gradient(#555,#333);
+  background-image: linear-gradient(#555,#333);
+  /*background: #eee url(arrow-right.png) right center no-repeat;*/
+}
+
+ul.nice-menu-right li.menuparent:hover,
+ul.nice-menu-right li li.menuparent:hover {
+  background: #555555;
+  background-image: -webkit-linear-gradient(#666,#444);
+  background-image: -moz-linear-gradient(#666,#444);
+  background-image: -ms-linear-gradient(#666,#444);
+  background-image: -o-linear-gradient(#666,#444);
+  background-image: linear-gradient(#666,#444);
+  /*background: #ccc url(arrow-right.png) right center no-repeat;*/
+}
+
+/* VERTICAL menus where submenus pop LEFT. */
+ul.nice-menu-left li ul {
+  width: 12.5em;
+  left: -12.65em;
+  top: -1px;
+}
+
+ul.nice-menu-left li ul li ul {
+  width: 12.5em;
+  left: -12.65em;
+  top: -1px;
+}
+
+ul.nice-menu-left li.menuparent,
+ul.nice-menu-left li li.menuparent {
+  background-color: #444444;
+  background-image: -webkit-linear-gradient(#555,#333);
+  background-image: -moz-linear-gradient(#555,#333);
+  background-image: -ms-linear-gradient(#555,#333);
+  background-image: -o-linear-gradient(#555,#333);
+  background-image: linear-gradient(#555,#333);
+  /*background: #eee url(arrow-left.png) left center no-repeat;*/
+}
+
+ul.nice-menu-left li.menuparent:hover,
+ul.nice-menu-left li li.menuparent:hover {
+  background: #555555;
+  background-image: -webkit-linear-gradient(#666,#444);
+  background-image: -moz-linear-gradient(#666,#444);
+  background-image: -ms-linear-gradient(#666,#444);
+  background-image: -o-linear-gradient(#666,#444);
+  background-image: linear-gradient(#666,#444);
+  /*background: #ccc url(arrow-left.png) left center no-repeat;*/
+}
+
+ul.nice-menu-left a, ul.nice-menu-left ul a {
+  padding-left: 14px;
+}
+
+/******************************
+ HORIZONTAL (down) menus
+******************************/
+
+ul.nice-menu-down {
+  border-top: 1px solid #888;
+  float: left; /* LTR */
+  width:100%;
+  background-color: #444444;
+  background-image: -webkit-linear-gradient(#555,#333);
+  background-image: -moz-linear-gradient(#555,#333);
+  background-image: -ms-linear-gradient(#555,#333);
+  background-image: -o-linear-gradient(#555,#333);
+  background-image: linear-gradient(#555,#333);
+}
+
+ul.nice-menu-down li {
+  border-top: 0px solid #888;
+}
+
+ul.nice-menu-down li li {
+  border-bottom: 1px solid #222;
+  background-color: #444444;
+}
+
+ul.nice-menu-down ul {
+  left: 0; /* LTR */
+}
+
+ul.nice-menu-down ul li {
+  clear: both;
+}
+
+ul.nice-menu-down li ul li ul {
+  left: 12.5em; /* LTR */
+  top: -1px;
+}
+
+ul.nice-menu-down .menuparent a {
+  /*padding-right: 15px;  LTR */
+}
+
+ul.nice-menu-down li.menuparent {
+  /*background: #eee url(arrow-down.png) right center no-repeat;  LTR */
+}
+
+ul.nice-menu li:hover {
+  background: #555555;
+  background-image: -webkit-linear-gradient(#666,#444);
+  background-image: -moz-linear-gradient(#666,#444);
+  background-image: -ms-linear-gradient(#666,#444);
+  background-image: -o-linear-gradient(#666,#444);
+  background-image: linear-gradient(#666,#444);
+  /*background: #ccc url(arrow-down.png) right center no-repeat; */ /* LTR */
+}
+
+ul.nice-menu-down li.menuparent:hover {
+  background: #555555;
+  background-image: -webkit-linear-gradient(#666,#444);
+  background-image: -moz-linear-gradient(#666,#444);
+  background-image: -ms-linear-gradient(#666,#444);
+  background-image: -o-linear-gradient(#666,#444);
+  background-image: linear-gradient(#666,#444);
+  /*background: #ccc url(arrow-down.png) right center no-repeat;*/ /* LTR */
+}
+
+ul.nice-menu-down li li.menuparent {
+  background-color: #444444;
+  background-image: -webkit-linear-gradient(#555,#333);
+  background-image: -moz-linear-gradient(#555,#333);
+  background-image: -ms-linear-gradient(#555,#333);
+  background-image: -o-linear-gradient(#555,#333);
+  background-image: linear-gradient(#555,#333);
+
+/*  background: #eee url(arrow-right.png) right center no-repeat;*/ /* LTR */
+}
+
+ul.nice-menu-down li li.menuparent:hover {
+  background: #555555;
+  background-image: -webkit-linear-gradient(#666,#444);
+  background-image: -moz-linear-gradient(#666,#444);
+  background-image: -ms-linear-gradient(#666,#444);
+  background-image: -o-linear-gradient(#666,#444);
+  background-image: linear-gradient(#666,#444);
+  /*background: #ccc url(arrow-right.png) right center no-repeat;*/ /* LTR */
+}
+
+/******************************
+ Garland-specific CSS
+******************************/
+
+/**
+ * Global CSS for ALL menu types
+ */
+ul.nice-menu li {
+  margin: 0;
+  padding-left: 0; /* LTR */
+  background-image: none;
+}
+
+#header-region ul.nice-menu li {
+  margin: 0;
+  /* Padding rules are needed to deal with Garland's header line-height. */
+  padding-top: 0.1em;
+  padding-bottom: 0.1em;
+  background: #eee;
+}
+
+#header-region ul.nice-menu ul {
+  top: 1.8em;
+  left: -1px; /* LTR */
+  border: 0;
+  border-top: 1px solid #888;
+  margin-right: 0; /* LTR */
+}
+
+#header-region ul.nice-menu ul {
+  top: 1.7em;
+}
+
+/**
+ * HORIZONTAL (down) menus
+ */
+#header-region ul.nice-menu-down li ul li ul {
+  left: 12.5em; /* LTR */
+  top: -1px;
+}
+
+#header-region ul.nice-menu-down li.menuparent {
+  background: #eee url(arrow-down.png) right center no-repeat; /* LTR */
+}
+
+#header-region ul.nice-menu-down li.menuparent:hover {
+  background: #ccc url(arrow-down.png) right center no-repeat; /* LTR */
+}
+
+#header-region ul.nice-menu-down li li.menuparent {
+  background: #eee url(arrow-right.png) right center no-repeat; /* LTR */
+}
+
+#header-region ul.nice-menu-down li li.menuparent:hover {
+  background: #ccc url(arrow-right.png) right center no-repeat; /* LTR */
+}

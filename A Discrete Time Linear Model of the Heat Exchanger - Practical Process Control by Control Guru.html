@@ -1,0 +1,272 @@
+
+<!-- saved from url=(0038)http://www.controlguru.com/wp/p80.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+  
+
+  <!-- PAGE TITLE XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX -->
+  <title>A Discrete Time Linear Model of the Heat Exchanger - Practical Process Control by Control Guru</title>
+  <meta name="keywords" content="cascade control, control guru, controlguru, Control Station, controlstation, 
+  control system, control tutorial, controller tuning, Doug Cooper, Douglas Cooper, dynamic matrix control, 
+  dynamic model, feed forward, feedforward, feedback, IMC tuning, internal model control, loop tuning,  
+  MPC control, model predictive control, multivariable control, PID  control, PID controllers, PID training, 
+  PID tuning, PID tutorial, predictive control, process control, process model, ratio control, 
+  Smith predictor, tuning controllers, tuning software ">
+  
+  <!-- PAGE DESCRIPTION XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX -->
+  <style type="text/css"></style><meta name="description" content="A Discrete Time Linear Model of the Heat Exchanger - Practical Process Control by ControlGuru">
+	<style>
+<!--
+a:visited    { color: #3333FF; text-decoration:none }
+-->
+</style>
+	<!--<base style="text-decoration: none" target="_blank">--><base href="." target="_blank">
+</head>
+
+<body background="./A Discrete Time Linear Model of the Heat Exchanger - Practical Process Control by Control Guru_files/background.jpg" topmargin="0" bottommargin="0">
+  <div align="center">
+    <!--header IFRAME -->
+    <iframe name="header" topmargin="0" align="middle" bordercolor="#0099FF" marginwidth="0" marginheight="0" height="100" width="804" scrolling="no" src="./A Discrete Time Linear Model of the Heat Exchanger - Practical Process Control by Control Guru_files/header.html" border="0" frameborder="0">
+    </iframe>
+    <table cellpadding="0" cellspacing="0" width="800" height="643" bgcolor="#FFFFFF">
+    <tbody><tr>
+  <td valign="top" rowspan="2">
+  <table cellpadding="0" cellspacing="0" border="0" width="100%" height="100%">
+  <tbody><tr>
+  <td valign="top" height="100%" width="100%">
+     <!-- Sidebar Iframe -->
+     <iframe name="sidebar" width="170" height="100%" marginwidth="0" marginheight="0" scrolling="no" align="left" border="0" frameborder="0" src="./A Discrete Time Linear Model of the Heat Exchanger - Practical Process Control by Control Guru_files/sidebar.html">
+     </iframe>
+  </td>
+  </tr>
+  </tbody></table>
+  </td>
+<td align="center">
+  <table cellpadding="0" cellspacing="0" border="0" width="100%" height="100%">
+  <tbody><tr>
+  <td bgcolor="#FFFFFF" align="center" width="8%" height="25" valign="bottom">
+  <p align="center">
+  
+    <!-- TITLE XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx -->
+    <img border="0" src="./A Discrete Time Linear Model of the Heat Exchanger - Practical Process Control by Control Guru_files/pcb-guest.jpg" width="73" height="14"></p></td>
+  <td bgcolor="#FFFFFF" align="center" width="91%" height="25" valign="bottom">
+  <p align="left">
+    <b><font face="Verdana" size="2" color="#000099">&nbsp;&nbsp;&nbsp; A Discrete Time Linear Model of the Heat Exchanger</font></b></p></td>
+  <td bgcolor="#0099FF" height="100%" width="2">
+  <img alt="" width="2" height="1" src="./A Discrete Time Linear Model of the Heat Exchanger - Practical Process Control by Control Guru_files/MsSpacer.gif">
+  </td>
+  </tr>
+  </tbody></table>
+  </td>
+  <td height="30">
+  </td>
+  </tr>
+	<tr>
+    <td valign="top" rowspan="2">
+	<table cellpadding="0" cellspacing="0" border="0" width="100%" height="100%">
+	
+	<tbody><tr>
+	<td width="100%">
+	<!-- Body Cell -->
+    <table border="0" width="100%" height="100%" cellpadding="2" cellspacing="0">
+    <tbody><tr>
+    <td width="98%" height="100%" valign="top">
+    <font face="Verdana" size="2">
+    
+    <!-- POST GOES HERE XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX --> 
+    
+    <p><br>
+	By Peter Nachtwey<sup>1</sup></p>
+<p>Since most of us don't have our own 
+<a href="http://www.controlguru.com/wp/p45.html" target="_blank" style="text-decoration: none">heat exchanger</a> to test on, I thought it would be good to show how one can be simulated. This would allow us to test the equations that calculate the PI tuning values over the range from a conservative to aggressive response. In addition, the sample period can be changed to see the affect that the sample period has on the response.</p>
+<p><strong>Building the Discrete Time Model<br>
+</strong>Learning how to model a first order plus dead time (FOPDT) system is the easiest place to start. This model simply uses the last process variable (PV) and the new CO (control output) to estimate what the new value of PV will be in the next time period.<!--more--></p>
+<p>The form of the discrete time model is:</p>
+<p>   PV(n+1) = A·PV(n) + B·Kp·CO(n–<span style="font-family: Times New Roman">&#1256;</span>p) + C</p>
+<p>The FOPDT model is basically a simple single pole filter similar to an RC circuit in electronics, except here:<br>
+1.  the system has gain, Kp<br>
+2.  the input at time n affects the output at time n+1 <br>
+3.  the system has an initial steady state, C, that is not 0<br>
+4.  the system has dead time, <span style="font-family: Times New Roman">&#1256;</span>p</p>
+<p>The first thing that must be done is to build the basic model by specifying the A and B constants.  Note that A and B are constants for a first order system and are arrays for higher order systems. So in this study:<br>
+  <br>
+   A = exp(–T/Tp)<br>
+   B = (1 – A)</p>
+<p>T is the sample period and <em>T</em>p is the plant time constant. A and B are coefficients in the range from 0 to 1, and coefficient A tends to be close to 1.</p>
+<p>Calculating coefficient C in the above model is the tricky part. The heat exchanger steady state is not 0 °C. If coefficient C is left out the above model equation or it is set to zero, than PV will approach 0. This does not match the observed behavior of the heat exchanger. Therefore, a value for C must be calculated that will provide the correct value of PV when CO is set to 0.</p>
+<p>This is done as follows. From the 
+<a href="http://www.controlguru.com/wp/p45.html" target="_blank" style="text-decoration: none">heat exchanger data plot</a>, we can see that the heat exchanger temperature (PV) is 140 °C degrees when the controller output (CO) is 39%. If these values are plugged into the formula y=mx+b, we can solve for the steady state temperature, PVss:</p>
+<p>   140 = 39Kp + PVss</p>
+<p>And this lets us calculate coefficient C:</p>
+<p>   C = (1 – A) PVss<br>
+              <br>
+The data below is from the 
+<a href="http://www.controlguru.com/wp/p57.html" target="_blank" style="text-decoration: none">Validating Our Heat Exchanger FOPDT Model</a> tutorial.  The heat exchanger is modeled as a reverse acting FOPDT system with Laplace domain transfer function:</p>
+<p><img src="./A Discrete Time Linear Model of the Heat Exchanger - Practical Process Control by Control Guru_files/laplacefopdt.jpg" border="0"></p>
+<p>The model parameter values for Kp, <em>T</em>p and <span style="font-family: Times New Roman">&#1256;</span>p where provided in the tutorial as:<br>
+• Plant gain, Kp = –0.533 °C/%<br>
+• Time constant, <em>T</em>p =  1.3 min<br>
+• Dead time, <span style="font-family: Times New Roman">&#1256;</span>p =  0.8 min</p>
+<p>Also,<br>
+• Sample time, T = 1/60 min<br>
+• Dead time in samples = n<span style="font-family: Times New Roman">&#1256;</span>p = <span style="font-family: Times New Roman">&#1256;</span>p/T = 48</p>
+<p>Steady state PV can now be computed assuming the system is linear:</p>
+<p>  PVss = 140 – 39Kp = 160.8 °C</p>
+<p>Next generate the discrete time transition matrix. In this simple case it is a single element:</p>
+<p>   A = exp(–T/Tp) = 0.987</p>
+<p>Also generate the discrete time input coupling matrix, which again is a single element. Notice that the plant gain is negative:</p>
+<p>  B Kp = (1 – A) Kp<br>
+          = (1 – 0.987)(–0.533)<br>
+          =  –0.00679</p>
+<p>Using the above information, coefficient C becomes:</p>
+<p>   C = (1 – A) PVss = 2.048</p>
+<p>Substitute our values for A, B and C into the discrete time model form above to calculate temperature (PV) as a function of controller output (CO) delayed by dead time, or:</p>
+<p>• PV(n+1) = 0.987 PV(n) – 0.00679 CO(n–48) + 2.048 </p>
+<p><strong>Open Loop Dynamics<br>
+</strong>The easiest way to test this discrete time model is to execute an open loop step test that is similar to the example given in a previous tutorial (see 
+<a href="http://www.controlguru.com/wp/p57.html" target="_blank" style="text-decoration: none">Validating Our Heat Exchanger FOPDT Model</a>).</p>
+<p>Initialize:<br>
+   temperature as: PV(0) = 140<br>
+   controller output as: CO  = 39 for n &#8804; 48<br>
+ <br>
+Implement controller output step at time t = 25.5 min, or n = 1530:<br>
+   CO = 39 for n &lt; 1530<br>
+   CO = 42 for n &#8805; 1531</p>
+<p>Simulate for 60 min, or: n = 0,1,…,3600. Display results in the plot below after 20 min (<a href="http://www.controlguru.com/postpics/peter/pnheopenbig.jpg" target="_blank" style="text-decoration: none">click for large view</a>):</p>
+<p><a href="http://www.controlguru.com/postpics/peter/pnheopenbig.jpg" target="_blank"><img src="./A Discrete Time Linear Model of the Heat Exchanger - Practical Process Control by Control Guru_files/pnheopensmall.jpg" border="0"></a></p>
+<p><strong>Controller Tuning</strong><br>
+The formulas for calculating the PI tuning values can now be tested using the discrete time process model that was generated above.</p>
+<p>The tuning values are for the PI controller that is expressed in the continuous time or analog form as:</p>
+<p> <img src="./A Discrete Time Linear Model of the Heat Exchanger - Practical Process Control by Control Guru_files/picontroller.jpg" border="0"></p>
+<p>The PI controller tuning values are calculated using the equations provided in previous tutorials (see  
+<a href="http://www.controlguru.com/wp/p71.html" target="_blank" style="text-decoration: none">PI Control of the Heat Exchanger</a>). Following that procedure, the desired closed loop time constant, <em>T</em>c, must be chosen to determine how quickly or how aggressive the desired response should be. </p>
+<p>For an aggressive response, <em>T</em>c should be the larger of  0.1<em>T</em>p  or  0.8<span style="font-family: Times New Roman">&#1256;</span>p. As listed above, <em>T</em>p = 1.3 min and <span style="font-family: Times New Roman">&#1256;</span>p = 0.8 min for the heat exchanger. Using these model parameters, then:</p>
+<p>Tc = max(0.1<em>T</em>p, 0.8<span style="font-family: Times New Roman">&#1256;</span>p) = 0.64</p>
+<p>A moderate <em>T</em>c of the larger of 1.0<em>T</em>p  or  8.0<span style="font-family: Times New Roman">&#1256;</span>p will produce a response with no overshoot. We will use this rule in the closed loop simulation below:</p>
+<p>Tc = max(1.0<em>T</em>p, 8.0<span style="font-family: Times New Roman">&#1256;</span>p) = 6.4</p>
+<p>Using this moderate <em>T</em>c, we can now compute the controller gain, Kc, and integrator term, <em>T</em>i:</p>
+<p><img src="./A Discrete Time Linear Model of the Heat Exchanger - Practical Process Control by Control Guru_files/hepituning.jpg" border="0"></p>
+<p><strong>Closed Loop PI Control</strong><br>
+The function logic that follows implements the PI controller and the discrete time FOPDT model's response. The controller uses the PV to calculate a CO that is used later by the plant model. How much later is determined by the dead time. The model then responds by changing the PV. This new PV is then used in the next iteration. </p>
+<p>- compute controller error:</p>
+<p>  ERR = SP – PV </p>
+<p>- compute COp, the proportional contribution to CO:</p>
+<p>  COp = Kc·ERR</p>
+<p>- compute COi, the integral contribution to CO:</p>
+<p>  COi = COi + (Kc·T·ERR)/<em>T</em>i</p>
+<p>- compute the total controller output:</p>
+<p>  CO = COp + COi</p>
+<p>- compute the process response at the next step n using the time-delayed CO:</p>
+<p>  PV(n+1) = A·PV(n) + B·Kp·CO(n–<span style="font-family: Times New Roman">&#1256;</span>p) + C<br>
+    </p>
+	<div align="center">
+<table style="border-collapse: collapse" cellpadding="5" width="95%" bgcolor="#ffff99" border="1">
+	<tbody><tr>
+		<td><font size="2">Aside: The integral contribution to CO can include the integrator limiting technique talked about in the 
+		<a target="_blank" style="text-decoration: none" href="http://www.controlguru.com/2008/021008.html">Integral (Reset) Windup and Jacketing Logic</a> post with the expression:</font><p><font size="2"><img src="./A Discrete Time Linear Model of the Heat Exchanger - Practical Process Control by Control Guru_files/pijacket.jpg" border="0"></font></p>
+</td>
+	</tr>
+</tbody></table>
+	</div>
+<p>We initialize the variables at time t=0 by assuming that there is no error and the system is in a quiescent state. Thus, all of the control output, CO, is due only to the integrator term, COi: </p>
+<p>PV(0) = 140;  CO(0) = 39;  COi(0) = CO(0)</p>
+<p>The plot below (<a href="http://www.controlguru.com/postpics/peter/pnheclosedbig.jpg" target="_blank" style="text-decoration: none">click for large view</a>) shows the response of the closed loop system over a simulation time of 60 minutes. The set point is stepped from 140 to 138.4 at time t = 25.5 minutes.</p>
+<p>The function logic above calculates the PV and CO for each time period in the 60 minute simulation.  Note that there are three CO type variables.  CO is the current control value, COi is the current integrator contribution to the CO, and CO(n-<span style="font-family: Times New Roman">&#1256;</span>p) is the delayed CO that simulates the dead time.</p>
+<p>When programming the functions, additional logic is required keep from using indexes less than 0.</p>
+<p><a href="http://www.controlguru.com/postpics/peter/pnheclosedbig.jpg" target="_blank"><img src="./A Discrete Time Linear Model of the Heat Exchanger - Practical Process Control by Control Guru_files/pnheclosedsmall.jpg" border="0"></a></p>
+<p>Notice that to prevent overshoot, the rate at which the controller's integrator output, COi, responds or winds up must be limited so the total control output does not exceed the final steady state control output, and final steady state control output is not reached before the system starts to respond.  The way I think about it is that the function is calculating the value for Kc so this goal can be achieved. </p>
+<p>Also notice that with moderate tuning, the closed loop response is much slower than the open loop response. </p>
+	<p>Return to the
+<a style="text-decoration: none" target="_self" href="http://www.controlguru.com/pages/table.html">
+Table of Contents</a> to learn more.</p>
+<p>__________<br>
+<strong>About the Author</strong><br>
+Peter Nachtwey is the president and head engineer of Delta Computer systems which is a manufacturer of motion control and color sensor products.  Peter Nachtwey has more than 20 years of experience developing hydraulic, pneumatic, electrical motion control and vision systems and products for industrial applications.</p>
+<p>Peter Nachtwey<br>
+President<br>
+Delta Computer Systems, Inc.<br>
+11719 NE 95th St Suite D<br>
+Vancouver, WA 98682-2444<br>
+(360) 255-8688<br>
+Email: <a href="mailto:peter@deltamotion.com" style="text-decoration: none">peter@deltamotion.com</a><br>
+Web: 
+<a href="http://www.deltamotion.com/" target="_blank" style="text-decoration: none">http://www.deltamotion.com</a></p>
+
+					<p><br><b>Addendum</b><br>Below is a Scilab program the implements the 
+					linear discrete heat 
+						exchanger simulation. The program below can be cut and 
+						pasted into Scilab’s editor. </p>
+	<p><font size="1">// SIMPLE HEAT EXCHANGER 
+						CALCULATION FROM CONTROL GURU<br>//
+						<a rel="nofollow" href="http://www.controlguru.com/" style="text-decoration: none">http://www.controlguru.com</a></font></p><font size="1">
+	<p>// NEW SCILAB USERS SHOULD BUY<br>// Modeling and Simulation in Scilab/Scicos</p>
+	<p>// NOTE, EXPRESSIONS ENDING WITH SEMICOLONS WILL NOT 
+						PRINT WHEN EXECUTED<br>// EXPRESSIOBS WITHOUT SEMICOLONS WILL DISPLAY THE 
+						ASSIGNED VALUE(S)</p>
+	<p>Kp=-0.533; // PLANT GAIN, UNITLESS<br>Tp=1.3*60; // PLANT TIME CONSNTAT IN SECONDS<br>DT=round(0.8*60); // PLANT DEAD TIME IN SECONDS<br>T=1; // UPDATE TIME IN SECONDS<br>PVss=140-39*Kp; // STEADY STATE TEMPERATURE</p>
+	<p>// CALCULATE THE MODEL COEFFICIENTS</p>
+	<p>A=exp(-T/Tp); // DISCRETE TIME TRANSITION MATRIX WITH 
+						ONLY ONE ELEMENT<br>B=Kp*(1-A); // DISCRETE TIME INPUT COUPLING MATRIX<br>C=(1-A)*PVss; // OFFSET OR SYSTEM BIAS SO SYSTEM GOES TO 
+						PVss WITH NO CONTROL</p>
+	<p>// CALCULATE THE PI CONTROLLER GAINS USING THE IMC 
+						METHOD AS FOUND ON CONTROLGURU</p>
+	<p>Tc=max(Tp,8*DT); // DESIRED CLOSED LOOP TIME CONSTANT<br>Kc=Tp/(Kp*(Tc+DT)); // CONTROLLER PROPORTIONAL GAIN<br>Ti=Tp; // CONTROLLER INTEGRATOR TIME CONSTANT</p>
+	<p>for n=1:3600 // SIMULATE 60 MINUTES OF TIME. n = 
+						SECONDS</p>
+	<p>// INITIAL CONDITIONS, NOTE SCILAB ARRAYS START WITH 
+						1</p>
+	<p>if n == 1 then<br>SP(1)=140; // INITIAL SET POINT<br>PV(1)=140; // PROCESS VARIABLE, TEMPERATURE = 140<br>CV(1)= 39; // CONTROL VARIABLE, OUTPUT % = 39%<br>CVi(1)=CV(1); // THE INTEGRATOR CONTRIBUTION TO THE 
+						OUTPUT. 39%<br>CVp(1)=0; // PROPORTIONAL CONTRIBBUTION TO THE OUTPUT<br>// ASSUME INITALY THERE IS NOT ERROR<br>end</p>
+	<p>// GENERATE THE SP AS A FUNCTION OF TIME<br>// IN THIS CASE THERE IS JUST A SIMPLE STEP CHANGE AS IN 
+						THE CONTROLGURU EXAMPLE<br>// ADD MORE SP CHANGES BY USING THE elsif KEYWORD</p>
+	</font><p><font size="1">if n</font></p>
+				
+			
+		
+	
+<p> </p>
+	
+	    <!-- END POST XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX --> 
+
+	<p><font size="1">Copyright © 2006 by Douglas J. Cooper. All Rights Reserved.<br>&nbsp;</font></p>
+    </font></td>
+    <td width="2%" height="100%" valign="top">&nbsp;</td>
+    </tr>
+    </tbody></table>
+    </td>
+    <td bgcolor="#0099FF" height="100%" width="2">
+    <img alt="" width="2" height="1" src="./A Discrete Time Linear Model of the Heat Exchanger - Practical Process Control by Control Guru_files/MsSpacer.gif"></td>
+    </tr>
+    </tbody></table>
+    </td>
+<!-- Overall Body Height This CAN NOT go below 511 or it will be overridden by the sidebar height -->
+<td height="4607"></td>
+	</tr>
+	<tr>
+<td></td>
+<td height="1"></td>
+	</tr>
+	<tr>
+<td width="186"></td>
+<td width="613"></td>
+		<td height="1" width="1"></td>
+	</tr>
+<!-- Footer Layout -->
+</tbody></table><table border="0" cellpadding="0" cellspacing="0" height="75" width="810" id="table3" bgcolor="#0099FF">
+<tbody><tr>
+<td valign="top" bgcolor="#FFFFFF" height="75" width="810">
+
+<table cellpadding="0" cellspacing="0" border="0" width="100%" height="100%" id="table4" bgcolor="#000099">		
+ <tbody><tr>
+  <td bgcolor="#ffffff">
+   <p align="center">
+    <iframe name="I1" src="./A Discrete Time Linear Model of the Heat Exchanger - Practical Process Control by Control Guru_files/footer.html" marginwidth="0" marginheight="0" height="75" width="800" scrolling="no" align="center" border="0" frameborder="0">
+    </iframe>
+   </p>
+  </td>
+ </tr>		
+</tbody></table>
+	
+
+
+
+</td></tr></tbody></table></div></body></html>
